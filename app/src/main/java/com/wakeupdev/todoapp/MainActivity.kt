@@ -19,9 +19,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TodoAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                }
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//
+//                }
             }
         }
     }
@@ -31,6 +31,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     TodoAppTheme {
-        Greeting("Android")
+//        Greeting("Android")
     }
 }
