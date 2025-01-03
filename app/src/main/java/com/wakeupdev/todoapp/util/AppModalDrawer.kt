@@ -1,6 +1,5 @@
 package com.wakeupdev.todoapp.util
 
-import android.media.MediaRouter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -32,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wakeupdev.todoapp.R
 import com.wakeupdev.todoapp.TodoDestinations
+import com.wakeupdev.todoapp.TodoNavigationActions
 import com.wakeupdev.todoapp.ui.theme.TodoAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -40,6 +40,7 @@ import kotlinx.coroutines.launch
 fun AppModalDrawer(
     drawerState: DrawerState,
     currentRoute: String,
+    navigationActions: TodoNavigationActions,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     content: @Composable () -> Unit
     ){
@@ -48,6 +49,8 @@ fun AppModalDrawer(
         drawerContent = {
             AppDrawer(
                 currentRoute = currentRoute,
+                navigateToTasks = { navigationActions.navigateToTasks() },
+                navigateToStatistics = { navigationActions.navigateToStatistics() },
                 closeDrawer = { coroutineScope.launch { drawerState.close() } }
             )
         }
@@ -59,8 +62,10 @@ fun AppModalDrawer(
 @Composable
 fun AppDrawer(
     currentRoute: String,
+    navigateToTasks: () -> Unit,
+    navigateToStatistics: () -> Unit,
     closeDrawer: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ){
     ModalDrawerSheet(
         drawerContainerColor = MaterialTheme.colorScheme.background,
@@ -72,7 +77,7 @@ fun AppDrawer(
             label = stringResource(id = R.string.list_title),
             isSelected = currentRoute == TodoDestinations.TASKS_ROUTE,
             action = {
-//                navigateToTasks()
+                navigateToTasks()
                 closeDrawer()
             }
         )
@@ -81,7 +86,7 @@ fun AppDrawer(
             label = stringResource(id = R.string.statistics_title),
             isSelected = currentRoute == TodoDestinations.STATISTICS_ROUTE,
             action = {
-//                navigateToStatistics()
+                navigateToStatistics()
                 closeDrawer()
             }
         )
@@ -161,7 +166,9 @@ fun PreviewAppDrawer() {
     TodoAppTheme {
         Surface {
             AppDrawer(
-                currentRoute = "TodoDestinations.TASKS_ROUTE",
+                currentRoute = TodoDestinations.TASKS_ROUTE,
+                navigateToTasks = {},
+                navigateToStatistics = {},
                 closeDrawer = {}
             )
         }
