@@ -9,6 +9,7 @@ import com.wakeupdev.todoapp.TodoScreens.ADD_EDIT_TASK_SCREEN
 import com.wakeupdev.todoapp.TodoScreens.STATISTICS_SCREEN
 import com.wakeupdev.todoapp.TodoScreens.TASKS_SCREEN
 import com.wakeupdev.todoapp.TodoScreens.TASK_DETAIL_SCREEN
+import kotlinx.serialization.Serializable
 
 /**
  * Screens used in [TodoDestinations]
@@ -35,6 +36,7 @@ object TodoDestinations {
     const val TASK_DETAIL_ROUTE = "$TASK_DETAIL_SCREEN/{$TASK_ID_ARG}"
     const val ADD_EDIT_TASK_ROUTE = "$ADD_EDIT_TASK_SCREEN/{$TITLE_ARG}?$TASK_ID_ARG={$TASK_ID_ARG}"
 }
+
 
 /**
  * Models the navigation actions in the app.
