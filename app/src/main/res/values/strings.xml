@@ -1,7 +1,26 @@
 <resources>
     <string name="app_name">TodoApp</string>
+    <string name="add_task">New Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="task_details">Task Details</string>
+    <string name="task_marked_complete">Task marked complete</string>
+    <string name="task_marked_active">Task marked active</string>
     <string name="tasks_header_image_content_description">Tasks header image</string>
     <string name="navigation_view_header_title">Todo</string>
     <string name="list_title">Task List</string>
     <string name="statistics_title">Statistics</string>
+
+    <string name="nav_all">All</string>
+    <string name="nav_active">Active</string>
+    <string name="nav_completed">Completed</string>
+    <string name="label_all">All Tasks</string>
+    <string name="label_active">Active Tasks</string>
+    <string name="label_completed">Completed Tasks</string>
+    <string name="no_tasks_all">You have no tasks!</string>
+    <string name="no_tasks_active">You have no active tasks!</string>
+    <string name="no_tasks_completed">You have no completed tasks!</string>
+    <string name="refresh">Refresh</string>
+    <string name="successfully_deleted_task_message">Task was deleted</string>
+    <string name="successfully_added_task_message">Task added</string>
+    <string name="no_data_description" />
 </resources>

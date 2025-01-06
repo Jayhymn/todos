@@ -15,6 +15,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.wakeupdev.todoapp.TodoDestinationsArgs.TASK_ID_ARG
+import com.wakeupdev.todoapp.TodoDestinationsArgs.TITLE_ARG
 import com.wakeupdev.todoapp.TodoDestinationsArgs.USER_MESSAGE_ARG
 import com.wakeupdev.todoapp.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
@@ -44,12 +46,31 @@ fun TodoNavGraph(
                 navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 0 }
             )
         ) {
-            entry ->
-                AppModalDrawer(
-                    drawerState, currentRoute, navActions
-                ) {
+            AppModalDrawer(
+                drawerState, currentRoute, navActions
+            ) {
 
-                }
+            }
+        }
+
+        composable(
+            TodoDestinations.STATISTICS_ROUTE
+        ) {
+            AppModalDrawer(
+                drawerState, currentRoute, navActions
+            ) {
+
+            }
+        }
+
+        composable(
+            TodoDestinations.ADD_EDIT_TASK_ROUTE,
+            arguments = listOf(
+                navArgument(TITLE_ARG) { type = NavType.IntType },
+                navArgument(TASK_ID_ARG) { type = NavType.StringType; nullable = true },
+            )
+        ) {
+
         }
     }
 }
